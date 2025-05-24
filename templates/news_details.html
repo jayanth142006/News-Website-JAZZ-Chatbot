@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Details | Jazzs News</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles1.css') }}">
+    <style>
+        /* Global Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* News Container */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        /* Headline Styling */
+        h1 {
+            color:#6d1d1d;
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        /* News Image */
+        .news-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+            margin: 15px auto;
+        }
+
+        /* Summary Styling */
+        h2 {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        h2.jsx-ace90f4eca22afc7 {
+            font-weight: bold;
+            color: #04080d;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        /* Paragraph Styling */
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='jazzs.png') }}" alt="News Logo">
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/sports">Sports</a>
+            <a href="/technology">Technology</a>
+            <a href="/business">Business</a>
+            <a href="/politics">Politics</a>
+            <a href="/education">Education</a>
+            <a href="/jazzbot">Jazz Bot</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Main Headline -->
+        {% for headline in news.headlines %}
+            <h1>{{ headline }}</h1>
+        {% endfor %}
+
+        <!-- News Image -->
+        {% if news.image %}
+            <img src="{{ news.image }}" alt="News Image" class="news-image">
+        {% endif %}
+
+        <!-- Summary (Only h2 with specific class) -->
+        {% for summary in news.summary %}
+            <h2 class="jsx-ace90f4eca22afc7">{{ summary }}</h2>
+        {% endfor %}
+
+        <!-- News Content -->
+        {% for paragraph in news.paragraphs %}
+            <p>{{ paragraph }}</p>
+        {% endfor %}
+    </div>
+
+    <footer>
+        <p>© 2025 Jazzs News | Built by Jayanth</p>
+    </footer>
+
+</body>
+</html>
+
+
+
